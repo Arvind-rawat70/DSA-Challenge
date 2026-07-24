@@ -22,8 +22,6 @@ public:
     }
     return count;
    }
-
-   
     int subarraysWithKDistinct(vector<int>& nums, int k) 
     {
         return ar_l(nums,k)-ar_l(nums,k-1);
