@@ -2,14 +2,12 @@ class Solution {
 public:
     string largestOddNumber(string num) 
     {
-        string ans;
         int n = num.size();
+        int index = -1;
         if(num[n-1]%2!=0)
         {
-            ans = num;
-            return ans;
+            return num;
         }
-        int index = 0;
         for(int i = n-1; i>=0; i--)
         {
             if(num[i]%2!=0)
@@ -18,6 +16,7 @@ public:
                 break;
             }
         }
+        string ans;
         if(index>=0)
         {
             if(num[index]%2!=0)
