@@ -2,28 +2,35 @@ class Solution {
 public:
     int mostFrequentEven(vector<int>& nums) 
     {
-        int ans = -1;
-        int result = INT_MAX;
-
-        unordered_map<int,int> map;
-
-        for(int i = 0; i < nums.size(); i++)
+        vector<int>result;
+        for(int i = 0; i<nums.size(); i++)
         {
-            map[nums[i]]++;
-        }
-
-        int freq = 0;
-
-        for(auto it : map)
-        {
-            if(it.first % 2 == 0 &&(it.second > freq ||(it.second == freq && it.first < result)))
+            if(nums[i]%2==0)
             {
-                freq = it.second;
-                result = it.first;
-                ans = it.first;
+                result.push_back(nums[i]);
             }
         }
-
-        return ans;
+        unordered_map<int,int>map;
+        for(int i = 0; i<result.size(); i++)
+        {
+            map[result[i]]++;
+        }
+        int max_freq = 0;
+        int res = -1;
+        for(auto it :map)
+        {
+            int num = it.first;
+            int freq = it.second;
+            if(freq>max_freq)
+            {
+                max_freq = freq;
+                res = it.first;
+            }
+            else if(max_freq == freq && num<res)
+            {
+                res = num;
+            }
+        }
+        return res;
     }
 };
